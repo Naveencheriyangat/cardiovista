@@ -70,19 +70,24 @@ class CardioVistaHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text('Cardio ', style: TextStyle(color: Colors.black)),
-            Text('Vista', style: TextStyle(color: Color(0xFFAA1F24))),
-          ],
-        ),
-        elevation: 5,
-        shadowColor: Colors.black,
-        leading: Container(
-          child: Image.asset('assets/images/Logo.png'),
-        ),
-      ),
+  title: Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: [
+      Text('Cardio ', style: TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold)),
+      Text('Vista', style: TextStyle(color: Color(0xFFAA1F24), fontSize: 18.0, fontWeight: FontWeight.bold)),
+    ],
+  ),
+  elevation: 5,
+  shadowColor: Colors.black,
+  leading: Container(
+    padding: EdgeInsets.all(8.0), // Add padding for better clarity
+    child: Image.asset(
+      'assets/images/Logo.png',
+      height: 40, // Adjust the height as needed for clarity
+    ),
+  ),
+),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -109,8 +114,8 @@ class CardioVistaHomePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 30),
-            SizedBox( // Wrap the buttons with SizedBox to control width
+            SizedBox(height: 10),
+            SizedBox( 
               width: 200, // Set desired width
               child: HoverButton(
                 text: 'SIGN IN',
