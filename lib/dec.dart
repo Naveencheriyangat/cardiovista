@@ -79,7 +79,11 @@ class VistaHomePage extends StatelessWidget {
         ),
         elevation: 5,
         shadowColor: Colors.black, leading: Container(
-          child: Image.asset('assets/images/Logo.png')),
+          padding: EdgeInsets.all(8.0), // Add padding for better clarity
+    child: Image.asset(
+      'assets/images/Logo.png',
+      height: 40, // Adjust the height as needed for clarity
+    ),),
 
       ),
       body: Padding(
