@@ -29,16 +29,21 @@ class CardioVistaHomePage extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text('Cardio ', style: TextStyle(color: Colors.black)),
-            Text('Vista', style: TextStyle(color: Color(0xFFAA1F24))),
+            Text('Cardio ', style: TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold)),
+            Text('Vista', style: TextStyle(color: Color(0xFFAA1F24), fontSize: 18.0, fontWeight: FontWeight.bold)),
           ],
         ),
         elevation: 5,
         shadowColor: Colors.black,
-         leading: Container(
-          child: Image.asset('assets/images/Logo.png')),
+        leading: Container(
+          padding: EdgeInsets.all(8.0), // Add padding for better clarity
+          child: Image.asset(
+            'assets/images/Logo.png',
+            height: 40, // Adjust the height as needed for clarity
+          ),
+        ),
       ),
-      body: SingleChildScrollView( // Wrap the body with SingleChildScrollView
+      body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
             boxShadow: [
@@ -95,30 +100,22 @@ class CardioVistaHomePage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Navigate to Your Details page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => YourDetailsPage()),
-                    );
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
                   },
                   child: Container(
                     margin: EdgeInsets.all(20),
-                    height: 100,
+                    height: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Color(0xFFAA1F24), width: 2), // Reduced border width
                     ),
                     child: Material(
-                      color:Color.fromARGB(255, 240, 251, 255),
+                      color: Color.fromARGB(255, 240, 251, 255),
                       borderRadius: BorderRadius.circular(20),
                       child: InkWell(
                         borderRadius: BorderRadius.circular(20),
                         onTap: () {
-                          // Navigate to Your Details page
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => YourDetailsPage()),
-                          );
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
                         },
                         splashColor: Color(0xFFAA1F24),
                         child: Center(
@@ -135,10 +132,9 @@ class CardioVistaHomePage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => PatientListPage()));
                   },
-
                   child: Container(
                     margin: EdgeInsets.all(20),
-                    height: 100,
+                    height: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Color(0xFFAA1F24), width: 2), // Reduced border width
@@ -164,23 +160,22 @@ class CardioVistaHomePage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Navigate to record screen
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => record()));
                   },
                   child: Container(
                     margin: EdgeInsets.all(20),
-                    height: 100,
+                    height: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Color(0xFFAA1F24), width: 2), // Reduced border width
                     ),
                     child: Material(
-                      color:Color.fromARGB(255, 240, 251, 255),
+                      color: Color.fromARGB(255, 240, 251, 255),
                       borderRadius: BorderRadius.circular(20),
                       child: InkWell(
                         borderRadius: BorderRadius.circular(20),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => record()));
-                          // Handle tap functionality for record screen
                         },
                         splashColor: Color(0xFFAA1F24),
                         child: Center(
@@ -198,44 +193,46 @@ class CardioVistaHomePage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar:SizedBox(height:50, child:  ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
-        ),
-        child: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          color: Colors.black,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.home, color: Colors.white),
-                onPressed: () { Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CardioVistaApp()),
-                );
-                },
-              ),
-              IconButton(
-                icon: Icon(Icons.person, color: Colors.white),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()),
-                  );
-                },
-              ),
-            ],
+      bottomNavigationBar: SizedBox(
+        height: 50,
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+          child: BottomAppBar(
+            shape: CircularNotchedRectangle(),
+            color: Colors.black,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.home, color: Colors.white),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CardioVistaApp()),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.person, color: Colors.white),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
-      ),),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
-
-// YourDetailsPage widget
 
 class YourDetailsPage extends StatelessWidget {
   @override
@@ -254,58 +251,59 @@ class YourDetailsPage extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'My Profile',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFAA1F24),
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'My Profile',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFAA1F24),
               ),
-              SizedBox(height: 20),
-              CircleAvatar(
-                radius: 60,
-                backgroundColor: Colors.grey[300], // Placeholder background color
-                child: Icon(
-                  Icons.person,
-                  size: 60,
-                  color: Colors.grey, // Placeholder icon color
-                ),
+            ),
+            SizedBox(height: 20),
+            CircleAvatar(
+              radius: 60,
+              backgroundColor: Colors.grey[300], // Placeholder background color
+              child: Icon(
+                Icons.person,
+                size: 60,
+                color: Colors.grey, // Placeholder icon color
               ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Your Name', // Placeholder for name, replace with actual name
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFFAA1F24),
-                    ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Your Name', // Placeholder for name, replace with actual name
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFAA1F24),
                   ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Your Email', // Placeholder for email, replace with actual email
-                style: TextStyle(
-                  fontSize: 18,
                 ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Your Email', // Placeholder for email, replace with actual email
+              style: TextStyle(
+                fontSize: 18,
               ),
-              SizedBox(height: 20),
-              ProfileInfoField(label: 'Licence number', value: '22'),
-              ProfileInfoField(label: 'Email', value: '0'),
-              ProfileInfoField(label: 'Phone number', value: '0'),
-              ProfileInfoField(label: 'Specialization', value: 'No'),
-              ProfileInfoField(label: 'Bio', value: 'Female'),
-              SizedBox(height: 20),
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+            ProfileInfoField(label: 'Age', value: '22'),
+            ProfileInfoField(label: 'Weight', value: '0'),
+            ProfileInfoField(label: 'Height', value: '0'),
+            ProfileInfoField(label: 'Sex', value: 'No'),
+            ProfileInfoField(label: 'Chest pain', value: 'Female'),
+            ProfileInfoField(label: 'Palpitation', value: 'Female'),
+            ProfileInfoField(label: 'Surgery If Any', value: 'Female'),
+            ProfileInfoField(label: 'Any Other Disease', value: 'Female'),
+            SizedBox(height: 20),
+          ],
         ),
       ),
       bottomNavigationBar: ClipRRect(
@@ -321,10 +319,11 @@ class YourDetailsPage extends StatelessWidget {
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.home, color: Colors.white),
-                onPressed: () { Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CardioVistaApp()),
-                );
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CardioVistaApp()),
+                  );
                 },
               ),
               IconButton(
