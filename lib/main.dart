@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'start.dart';
-import 'skip2.dart';
 
+import 'package:flutter/material.dart';
+import 'skip2.dart';
+import 'start.dart';
 void main() {
   runApp(const Front());
 }
@@ -17,7 +17,51 @@ class Front extends StatelessWidget {
         primarySwatch: Colors.red,
         scaffoldBackgroundColor: Colors.white, // Set background color to white
       ),
-      home: CardioVistaHomePage(),
+      home: SwipeNavigation(),
+    );
+  }
+}
+
+class SwipeNavigation extends StatefulWidget {
+  @override
+  _SwipeNavigationState createState() => _SwipeNavigationState();
+}
+
+class _SwipeNavigationState extends State<SwipeNavigation> {
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent, // Set background color to transparent
+      child: PageView(
+        controller: _pageController,
+        physics: BouncingScrollPhysics(), // Use BouncingScrollPhysics for smoother navigation
+        onPageChanged: (int index) {
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Frontt()),
+            );
+          }
+        },
+        children: [
+          CardioVistaHomePage(),
+          Container(color: Colors.transparent), // Placeholder for Frontt page
+        ],
+      ),
     );
   }
 }
@@ -30,15 +74,17 @@ class CardioVistaHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          SizedBox(height: 30,),
           Expanded(
             child: Center(
               child: Image.asset(
                 'assets/images/main.jpg', // Provide your image path here
-                width: 200, // Adjust width as needed
-                height: 200, // Adjust height as needed
+                width: 400, // Adjust width as needed
+                height: 400, // Adjust height as needed
               ),
             ),
           ),
+          SizedBox(height: 5,),
           Expanded(
             child: Stack(
               children: [
@@ -70,10 +116,10 @@ class CardioVistaHomePage extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Frontt()),
-                        );
+                    Navigator.push( // Navigate to Sign In page
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  );// Not doing anything for Skip button as navigation is handled by swiping
                   },
                   child: Text(
                     'Skip',
@@ -82,10 +128,10 @@ class CardioVistaHomePage extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                     Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Login()),
-                        );
+                    Navigator.push( // Navigate to Sign In page
+                    context,
+                    MaterialPageRoute(builder: (context) => Frontt()),
+                  );
                   },
                   child: Text(
                     'Next',
@@ -99,4 +145,7 @@ class CardioVistaHomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+class _pageController {
 }
