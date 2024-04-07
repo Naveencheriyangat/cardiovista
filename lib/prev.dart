@@ -118,7 +118,7 @@ class VistaHomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('104', style: TextStyle(fontSize: 48)),
-                          Icon(Icons.favorite, color: Color(0xFFAA1F24)),
+                          Icon(Icons.favorite, color: Color(0xFFAA1F24)),//hloo
                           Text('Good health'),
                           Text('Dr. Naveen'),
                           Text('Visited date: 30-04-2023')
