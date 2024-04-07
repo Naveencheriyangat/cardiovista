@@ -65,14 +65,15 @@ class _MyLoginPageState extends State<MyLoginPage> {
   late TextEditingController ageController;
   late TextEditingController weightController;
   late TextEditingController heightController;
+   late TextEditingController sexController;
   late TextEditingController bpController;
   late TextEditingController bioController;
   late TextEditingController chestPainController;
   late TextEditingController palpitationController;
   late TextEditingController surgeryController;
   late TextEditingController diseasesController;
-  late TextEditingController useridController;
-  late TextEditingController sexController;
+  //late TextEditingController useridController;
+ 
 
   // Declare hover state variables
   bool _isSignInHovered = false;
@@ -86,14 +87,14 @@ class _MyLoginPageState extends State<MyLoginPage> {
     ageController = TextEditingController();
     weightController = TextEditingController();
     heightController = TextEditingController();
+    sexController = TextEditingController();
     bpController = TextEditingController();
     bioController = TextEditingController();
     chestPainController = TextEditingController();
     palpitationController = TextEditingController();
     surgeryController = TextEditingController();
     diseasesController = TextEditingController();
-    useridController = TextEditingController();
-    sexController = TextEditingController();
+    //useridController = TextEditingController();
     super.initState();
   }
 
@@ -105,14 +106,14 @@ class _MyLoginPageState extends State<MyLoginPage> {
     ageController.dispose();
     weightController.dispose();
     heightController.dispose();
+    sexController.dispose();
     bpController.dispose();
     bioController.dispose();
     chestPainController.dispose();
     palpitationController.dispose();
     surgeryController.dispose();
     diseasesController.dispose();
-    useridController.dispose();
-    sexController.dispose();
+    //useridController.dispose();
     super.dispose();
   }
 
@@ -169,8 +170,8 @@ class _MyLoginPageState extends State<MyLoginPage> {
                     buildDropdownField('Surgery', surgeryController,['yes' , 'no']),
                     SizedBox(height: 8),
                     buildResizableTextField('Any other', diseasesController),
-                    SizedBox(height: 8),
-                    buildDropdownField('User id', useridController, ['admin','anelbabu','adheena','gopesh']),
+                    //SizedBox(height: 8),
+                    //buildDropdownField('User id', useridController, ['admin','anelbabu','adheena','gopesh']),
                     SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
@@ -377,6 +378,7 @@ Widget buildDropdownField(String labelText, TextEditingController controller, Li
       ),
     );
   }
+  
 
   // Other Widget builders remain unchanged...
 
@@ -393,7 +395,7 @@ Widget buildDropdownField(String labelText, TextEditingController controller, Li
     final palpitation = palpitationController.text;
     final surgery = surgeryController.text;
     final diseases = diseasesController.text;
-    final userid = useridController.text;
+    //final userid = useridController.text;
 
     final body = {
       "name": name,
@@ -408,7 +410,7 @@ Widget buildDropdownField(String labelText, TextEditingController controller, Li
       "palpitation": palpitation,
       "surgery": surgery,
       "any_other": diseases,
-      "user_id": userid,
+      //"user_id": userid,
       
     };
     print(body);
