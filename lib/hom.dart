@@ -147,7 +147,7 @@ class CardioVistaHomePage extends StatelessWidget {
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => PatientListPage()));
                         },
-                        splashColor: Color(0xFFAA1F24),
+                        splashColor: Color(0xFFAA1F24),//hloo
                         child: Center(
                           child: Text(
                             'Doctor History',
