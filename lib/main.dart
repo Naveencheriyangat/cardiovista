@@ -92,7 +92,7 @@ class CardioVistaHomePage extends StatelessWidget {
                   child: Image.asset(
                     'assets/images/Ellipse.png', // Provide the path for the Ellipse image here
                     width: 400, // Adjust width as needed
-                    height: 400, // Adjust height as needed
+                    height: 400, // Adjust height as needed//kvfnkbnfk
                   ),
                 ),
                 Center(
