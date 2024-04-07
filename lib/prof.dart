@@ -65,14 +65,14 @@ class _MyLoginPageState extends State<MyLoginPage> {
   late TextEditingController ageController;
   late TextEditingController weightController;
   late TextEditingController heightController;
-   late TextEditingController sexController;
+  late TextEditingController sexController;
   late TextEditingController bpController;
   late TextEditingController bioController;
   late TextEditingController chestPainController;
   late TextEditingController palpitationController;
   late TextEditingController surgeryController;
   late TextEditingController diseasesController;
-  //late TextEditingController useridController;
+  late TextEditingController useridController;
  
 
   // Declare hover state variables
@@ -94,7 +94,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
     palpitationController = TextEditingController();
     surgeryController = TextEditingController();
     diseasesController = TextEditingController();
-    //useridController = TextEditingController();
+    useridController = TextEditingController();
     super.initState();
   }
 
@@ -113,7 +113,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
     palpitationController.dispose();
     surgeryController.dispose();
     diseasesController.dispose();
-    //useridController.dispose();
+    useridController.dispose();
     super.dispose();
   }
 
@@ -170,8 +170,8 @@ class _MyLoginPageState extends State<MyLoginPage> {
                     buildDropdownField('Surgery', surgeryController,['yes' , 'no']),
                     SizedBox(height: 8),
                     buildResizableTextField('Any other', diseasesController),
-                    //SizedBox(height: 8),
-                    //buildDropdownField('User id', useridController, ['admin','anelbabu','adheena','gopesh']),
+                    SizedBox(height: 8),
+                    buildTextField('User id', useridController),
                     SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
@@ -380,9 +380,13 @@ Widget buildDropdownField(String labelText, TextEditingController controller, Li
   }
   
 
+
+
   // Other Widget builders remain unchanged...
 
   void submitData() async {
+  
+
     final name = nameController.text;
     final dob = dobController.text;
     final number = numberController.text;
@@ -395,7 +399,7 @@ Widget buildDropdownField(String labelText, TextEditingController controller, Li
     final palpitation = palpitationController.text;
     final surgery = surgeryController.text;
     final diseases = diseasesController.text;
-    //final userid = useridController.text;
+    final userid = useridController.text;
 
     final body = {
       "name": name,
@@ -410,20 +414,25 @@ Widget buildDropdownField(String labelText, TextEditingController controller, Li
       "palpitation": palpitation,
       "surgery": surgery,
       "any_other": diseases,
-      //"user_id": userid,
+      "user_id": userid,
       
     };
     print(body);
 
-    final url = 'http://127.0.0.1:8000/patient_details/Pcreate';
+    const url = 'http://127.0.0.1:8000/patient_details/Pcreate';
     final uri = Uri.parse(url);
-
+    //const token = '9b5e92e8c1e1b7f597a5c0e9d90a205a85e56a4c';
+    
     try {
+      
       final response = await http.post(
-        uri,
-        body: jsonEncode(body),
-        headers: {'Content-Type': 'application/json'},
-      );
+  uri,
+  body: jsonEncode(body),
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'token e43442804dcf00ef891cdbc45f76db110d78b1f8', // Add the bearer token to the headers
+  },
+);
 
       if (response.statusCode == 200) {
         // Request successful
