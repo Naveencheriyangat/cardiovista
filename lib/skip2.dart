@@ -14,7 +14,7 @@ class Frontt extends StatelessWidget {
       title: 'Cardio Vista',
       theme: ThemeData(
         primarySwatch: Colors.red,
-        scaffoldBackgroundColor: Colors.white, // Set background color to white
+        scaffoldBackgroundColor: Colors.white, // Set background color to white//hi
       ),
       home: SwipeNavigation(),
     );
