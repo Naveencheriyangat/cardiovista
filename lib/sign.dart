@@ -32,7 +32,7 @@ class SignIn extends StatelessWidget {
      padding: EdgeInsets.all(8.0), // Add padding for better clarity
     child: Image.asset(
       'assets/images/Logo.png',
-      height: 40, // Adjust the height as needed for clarity
+      height: 40, // Adjust the height as needed for clarity//hi
     ),
   ),
 ),
