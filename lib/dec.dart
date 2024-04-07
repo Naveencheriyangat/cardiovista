@@ -74,7 +74,7 @@ class VistaHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text('Cardio ', style: TextStyle(color: Colors.black)),
-            Text('Vista', style: TextStyle(color: Color(0xFFAA1F24))),
+            Text('Vista', style: TextStyle(color: Color(0xFFAA1F24))),//hi
           ],
         ),
         elevation: 5,
